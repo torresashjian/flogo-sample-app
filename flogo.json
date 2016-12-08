@@ -1,0 +1,27 @@
+{
+  "name": "myApp",
+  "version": "0.0.1",
+  "description": "My flogo application description",
+  "models": [
+    {
+      "name": "tibco-simple",
+      "path": "github.com/TIBCOSoftware/flogo-contrib/model/simple",
+      "version": "latest"
+    }
+  ],
+  "activities": [
+    {
+      "name": "blockchain",
+      "path": "activity/blockchain",
+      "version": "latest",
+      "localpath": "file:///Users/mtorres/dev/flogo/flogo-contrib/src/github.com/TIBCOSoftware/flogo-contrib/activity/blockchain"
+    }
+  ],
+  "triggers": [
+    {
+      "name": "tibco-rest",
+      "path": "github.com/TIBCOSoftware/flogo-contrib/trigger/rest",
+      "version": "latest"
+    }
+  ]
+}
