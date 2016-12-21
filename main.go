@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"os/signal"
-	"syscall"
+	//	"os"
+	//	"os/signal"
+	//	"syscall"
 
 	"github.com/TIBCOSoftware/flogo-lib/engine"
-	"github.com/op/go-logging"
+	//	"github.com/op/go-logging"
 )
 
 func init() {
@@ -37,51 +37,51 @@ func main() {
 
 	engine := engine.New()
 
-	EnableFlowServices(engine, engineConfig)
-
-	engine.Start()
-
-	exitChan := setupSignalHandling()
-
-	code := <-exitChan
-
-	engine.Stop()
-
-	os.Exit(code)
+	//	EnableFlowServices(engine, engineConfig)
+	//
+	//	engine.Start()
+	//
+	//	exitChan := setupSignalHandling()
+	//
+	//	code := <-exitChan
+	//
+	//	engine.Stop()
+	//
+	//	os.Exit(code)
 }
 
-func setupSignalHandling() chan int {
-
-	signalChan := make(chan os.Signal, 1)
-	signal.Notify(signalChan,
-		syscall.SIGHUP,
-		syscall.SIGINT,
-		syscall.SIGTERM,
-		syscall.SIGQUIT)
-
-	exitChan := make(chan int)
-	go func() {
-		for {
-			s := <-signalChan
-			switch s {
-			// kill -SIGHUP
-			case syscall.SIGHUP:
-				exitChan <- 0
-			// kill -SIGINT/Ctrl+c
-			case syscall.SIGINT:
-				exitChan <- 0
-			// kill -SIGTERM
-			case syscall.SIGTERM:
-				exitChan <- 0
-			// kill -SIGQUIT
-			case syscall.SIGQUIT:
-				exitChan <- 0
-			default:
-				log.Debug("Unknown signal.")
-				exitChan <- 1
-			}
-		}
-	}()
-
-	return exitChan
-}
+//func setupSignalHandling() chan int {
+//
+//	signalChan := make(chan os.Signal, 1)
+//	signal.Notify(signalChan,
+//		syscall.SIGHUP,
+//		syscall.SIGINT,
+//		syscall.SIGTERM,
+//		syscall.SIGQUIT)
+//
+//	exitChan := make(chan int)
+//	go func() {
+//		for {
+//			s := <-signalChan
+//			switch s {
+//			// kill -SIGHUP
+//			case syscall.SIGHUP:
+//				exitChan <- 0
+//			// kill -SIGINT/Ctrl+c
+//			case syscall.SIGINT:
+//				exitChan <- 0
+//			// kill -SIGTERM
+//			case syscall.SIGTERM:
+//				exitChan <- 0
+//			// kill -SIGQUIT
+//			case syscall.SIGQUIT:
+//				exitChan <- 0
+//			default:
+//				log.Debug("Unknown signal.")
+//				exitChan <- 1
+//			}
+//		}
+//	}()
+//
+//	return exitChan
+//}
