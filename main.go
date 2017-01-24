@@ -46,7 +46,7 @@ func main() {
 
 	code := <-exitChan
 
-	eng.Stop()
+	e.Stop()
 
 	os.Exit(code)
 }
